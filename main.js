@@ -1,22 +1,22 @@
-const container = document.getElementById("container")
+const grid = document.getElementById("grid")
 const gridSize = document.getElementById("gridSize")
 const rainbow = document.getElementById("rainbow")
 const darkening = document.getElementById("darkening")
 
 //CUADRICULA
-const grid = (size) => {
+const getGrid = (size) => {
     for(let i = 0; i < size; i++) {
         const row = document.createElement("div")
         row.setAttribute("id", "row" + i)
-        row.setAttribute("style", "display: flex; flex: 1; width: 400px")
+        row.setAttribute("style", "display: flex; flex: 1; width: 700px")
         for(let j = 0; j < size; j++) {
-            const hole = document.createElement("div")
-            hole.setAttribute("id", i + "" + j)
-            hole.setAttribute("style", "flex: 1")
-            row.appendChild(hole)
-            printGrid(hole)
+            const elementGrid = document.createElement("div")
+            elementGrid.setAttribute("id", i + "" + j)
+            elementGrid.setAttribute("style", "flex: 1")
+            row.appendChild(elementGrid)
+            printGrid(elementGrid)
         }
-        container.appendChild(row)
+        grid.appendChild(row)
     }
 }
 
@@ -51,9 +51,9 @@ const printGrid = (box) => {
 //FUNCION PARA DEFINIR UN TAMAÑO ESPECIFICO DE LA CUADRICULA
 gridSize.addEventListener(("click"), () => {
     const size = prompt("Ingrese la cantidad de cuadrados por lado para la nueva cuadricula", "32")
-    container.innerHTML = ""
-    createGrid(size)
+    grid.innerHTML = ""
+    getGrid(size)
 })
 
 //LLAMADA A LA FUNCION DE CUADRICULA PARA CREARLA DE MANERA DEFAULT CON UN TAMAÑO DE 16x16
-grid(16)
+getGrid(16)
